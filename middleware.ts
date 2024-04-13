@@ -1,12 +1,11 @@
 import { authMiddleware  } from "@clerk/nextjs";
-import {createRouterMatcher} from "@clerk/nextjs/server"
+// import {createRouterMatcher} from "@clerk/nextjs/server"
 // See https://clerk.com/docs/references/nextjs/auth-middleware
 // for more information about configuring your Middleware
 export default authMiddleware({
   // Allow signed out users to access the specified routes:
   // publicRoutes: ['/anyone-can-visit-this-route'],
 });
- 
 export const config = {
   matcher: [
     // Exclude files with a "." followed by an extension, which are typically static files.
