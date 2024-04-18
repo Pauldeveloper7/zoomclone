@@ -6,7 +6,7 @@ import {useRouter } from 'next/navigation'
 import MeetingModel from './MeetingModel'
 import { Call, useStreamVideoClient } from '@stream-io/video-react-sdk'
 import { useUser } from '@clerk/nextjs'
-
+import { useToast } from './ui/use-toast'
 const MeetingTypeList = () => {
   const [meetingState, setMeetingState] = useState<'isScheduleMeeting'|'isJoiningMeeting'|'isInstantMeeting'|undefined>()
   const router = useRouter()
@@ -17,8 +17,13 @@ const MeetingTypeList = () => {
     description:'',
     link:''
   })
-  const [callDetails, setcallDetails] = useState<Call>()
+  const [callDetails, setcallDetails] = useState<Call>();
+  const {toast} = useToast();
   const createMeeting = async ()=>{
+    if(!values.dateTime){
+      toast({title:"Please select a date and time"})
+        return ;
+    }
    if(!client || !user) return ;
    try {
     const id = crypto.randomUUID();
@@ -38,12 +43,12 @@ const MeetingTypeList = () => {
    if(!values.description){
     router.push(`/meeting/${call.id}`);
    }
-   console.log('Running');
+   toast({title:"Meeting Created"}) ; 
   } catch (error) {
     console.log(error);
-    console.log('error hai')
-   }
+    toast({title: "failed to create meeting",})
   }
+}
   return (
     <section className='grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4'>
      <Homecard
