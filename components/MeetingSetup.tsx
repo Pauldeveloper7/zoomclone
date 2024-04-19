@@ -12,20 +12,20 @@ const MeetingSetup = ({setisSetComplete}:{setisSetComplete:(value:boolean)=> voi
         Call Not Found
       </p>
     );
-  //   useEffect(() => {
-  //  const fetch = ()=>{  
-  //   if(isMicCamToggleOn)
-  //      {
-  //       call?.camera.disable();
-  //       call?.microphone.disable();
-  //    }
-  //    else{
-  //       call?.camera.enable();
-  //       call?.microphone.enable();
-  //    }
-  //   } 
-  //   fetch();
-  //   }, [isMicCamToggleOn, call.camera,call.microphone])
+    useEffect(() => {
+       const func = async  ()=>{
+       if (isMicCamToggleOn) {
+         await call?.camera.disable();
+         await  call?.microphone.disable();
+      } 
+      else{
+        await call?.camera.enable();
+        await call?.microphone.enable();
+      }
+    }
+    func();
+      // Specify the dependencies for this useEffect correctly
+    }, [isMicCamToggleOn, call?.camera, call?.microphone]);
     
   return (
     <div className='flex h-screen w-full flex-col items-center justify-center gap-3 text-white'>
