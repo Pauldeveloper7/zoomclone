@@ -4,14 +4,14 @@ import {useState,useEffect} from 'react'
 import { Button } from './ui/button';
 
 
-const MeetingSetup = ({setisSetComplete}:{setisSetComplete:(value:boolean)=> void}) => {
+const MeetingSetup = ({setIsSetComplete}:{setIsSetComplete:(value:boolean)=> void}) => {
     const [isMicCamToggleOn, setIsMicCamToggleOn] = useState(false);
     const call = useCall();
     if (!call) return (
       <p className="text-center text-3xl font-bold text-white">
         Call Not Found
       </p>
-    );
+    );1
     useEffect(() => {
        const func = async  ()=>{
        if (isMicCamToggleOn) {
@@ -24,15 +24,14 @@ const MeetingSetup = ({setisSetComplete}:{setisSetComplete:(value:boolean)=> voi
       }
     }
     func();
-      // Specify the dependencies for this useEffect correctly
     }, [isMicCamToggleOn, call?.camera, call?.microphone]);
     
   return (
     <div className='flex h-screen w-full flex-col items-center justify-center gap-3 text-white'>
-      setUp
         <h1 className='text-2xl font-bold'>
-          <VideoPreview/>
+           Setup
         </h1> 
+          <VideoPreview/>
         <div className='flex h-16  items-center justify-center gap-3'>
        <label  className='flex items-center justify-center gap-2 font-medium'>
         <input type="checkbox" checked={isMicCamToggleOn}  onChange={(e)=> setIsMicCamToggleOn(e.target.checked)} />
@@ -40,7 +39,7 @@ const MeetingSetup = ({setisSetComplete}:{setisSetComplete:(value:boolean)=> voi
        </label>
        <DeviceSettings/>
         </div>
-        <Button className='rounded-md  bg-green-500 px-4 py-2.5' onClick={()=>{call.join(); setisSetComplete(true)}}>
+        <Button className='rounded-md  bg-green-500 px-4 py-2.5' onClick={()=>{call.join(); setIsSetComplete(true)}}>
          Join meeting
         </Button>
     </div>
