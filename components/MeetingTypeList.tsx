@@ -6,7 +6,8 @@ import {useRouter } from 'next/navigation'
 import MeetingModel from './MeetingModel'
 import { Call, useStreamVideoClient } from '@stream-io/video-react-sdk'
 import { useUser } from '@clerk/nextjs'
-import { useToast } from './ui/use-toast'
+import { useToast } from "@/components/ui/use-toast"
+// import { useToast } from './ui/use-toast'
 const MeetingTypeList = () => {
   const [meetingState, setMeetingState] = useState<'isScheduleMeeting'|'isJoiningMeeting'|'isInstantMeeting'|undefined>()
   const router = useRouter()
