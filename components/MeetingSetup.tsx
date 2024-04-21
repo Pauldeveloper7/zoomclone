@@ -11,20 +11,25 @@ const MeetingSetup = ({setIsSetComplete}:{setIsSetComplete:(value:boolean)=> voi
       <p className="text-center text-3xl font-bold text-white">
         Call Not Found
       </p>
-    );1
-    useEffect(() => {
-       const func = async  ()=>{
-       if (isMicCamToggleOn) {
-         await call?.camera.disable();
-         await  call?.microphone.disable();
-      } 
-      else{
-        await call?.camera.enable();
-        await call?.microphone.enable();
-      }
-    }
-    func();
-    }, [isMicCamToggleOn, call?.camera, call?.microphone]);
+    );
+    const handleMicCamToggle = () => {
+      setIsMicCamToggleOn((prev) => {
+        if (prev) {
+          call.camera.disable();
+          call.microphone.disable();
+        } else {
+          call.camera.enable();
+          call.microphone.enable();
+        }
+        return !prev;
+      });
+    };
+  
+    const handleJoinMeeting = () => {
+      call.join();
+      setIsSetComplete(true);
+    };
+   
     
   return (
     <div className='flex h-screen w-full flex-col items-center justify-center gap-3 text-white'>
@@ -34,12 +39,12 @@ const MeetingSetup = ({setIsSetComplete}:{setIsSetComplete:(value:boolean)=> voi
           <VideoPreview/>
         <div className='flex h-16  items-center justify-center gap-3'>
        <label  className='flex items-center justify-center gap-2 font-medium'>
-        <input type="checkbox" checked={isMicCamToggleOn}  onChange={(e)=> setIsMicCamToggleOn(e.target.checked)} />
+        <input type="checkbox" checked={isMicCamToggleOn}  onChange={handleMicCamToggle} />
         Join with mic and camera off 
        </label>
        <DeviceSettings/>
         </div>
-        <Button className='rounded-md  bg-green-500 px-4 py-2.5' onClick={()=>{call.join(); setIsSetComplete(true)}}>
+        <Button className='rounded-md  bg-green-500 px-4 py-2.5' onClick={handleJoinMeeting}>
          Join meeting
         </Button>
     </div>
