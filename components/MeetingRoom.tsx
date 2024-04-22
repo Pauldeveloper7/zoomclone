@@ -2,18 +2,27 @@
 import { cn } from '@/lib/utils';
 import {DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuLabel,DropdownMenuSeparator,DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { CallControls, CallParticipantsList, PaginatedGridLayout, SpeakerLayout } from '@stream-io/video-react-sdk';
+import { CallControls, CallParticipantsList, CallingState, PaginatedGridLayout, SpeakerLayout, useCallStateHooks } from '@stream-io/video-react-sdk';
 import {useState} from 'react'
 import { LayoutList,  Users2Icon } from 'lucide-react';
+import EndCallButton from './EndCallButton'
+import { useSearchParams } from 'next/navigation';
+import Loader from './Loader';
 type callLayoutType = 'grid' | 'speaker-left' | 'speaker-right'
 const MeetingRoom = () => {
   const [layout, setLayout] = useState<callLayoutType>('speaker-left');
-  const [showParticipants, setShowParticipants] = useState(false)
+  const [showParticipants, setShowParticipants] = useState(false);
+  const {useCallCallingState} = useCallStateHooks();
+  const searchParams = useSearchParams();
+  const isPersonalRoom  = !!searchParams.get('personal')
+  const callingState =  useCallCallingState();
+  if(callingState !== CallingState.JOINED) return  <Loader/> ;
+    
   const CallLayout = ()=> {
     switch (layout) {
       case 'grid':
         return <PaginatedGridLayout/>
-      case 'speaker-right':
+      case 'speaker-left':
         return <SpeakerLayout participantsBarPosition="left"/>
       default:
         return <SpeakerLayout participantsBarPosition="right"/>
@@ -29,7 +38,7 @@ const MeetingRoom = () => {
           <CallParticipantsList onClose={()=> setShowParticipants(false)}/>
         </div>
         </div>
-        <div className='fixed bottom-0 flex w-full items-center justify-center gap-5'>
+        <div className='fixed bottom-0 flex w-full items-center justify-center gap-5 flex-wrap'>
                 <CallControls />
 <DropdownMenu>
 <div className='flex items-center'>
@@ -54,8 +63,11 @@ const MeetingRoom = () => {
    <button onClick={()=> setShowParticipants((prev)=> !prev)}>
     <div className=' cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]'>
         <Users2Icon  size={20} className='text-white'/>
+    
     </div>
    </button>
+   {!isPersonalRoom && <EndCallButton />}
+   
         </div>
     </section>
   )
