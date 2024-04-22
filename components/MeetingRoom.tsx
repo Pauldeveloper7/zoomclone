@@ -6,9 +6,8 @@ import { CallControls, CallParticipantsList, CallingState, PaginatedGridLayout, 
 import {useState} from 'react'
 import { LayoutList,  Users2Icon } from 'lucide-react';
 import EndCallButton from './EndCallButton'
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Loader from './Loader';
-import { useRouter } from 'next/navigation';
 type callLayoutType = 'grid' | 'speaker-left' | 'speaker-right'
 const MeetingRoom = () => {
   const [layout, setLayout] = useState<callLayoutType>('speaker-left');
