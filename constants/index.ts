@@ -17,10 +17,10 @@ export const Sidebarlinks = [
     {
         label:'Recodings',
         imgUrl:'/icons/recordings.svg',
-        route:'/recodings'
+        route:'/recordings'
     }, 
     {
-        label:'Personal Roon',
+        label:'Personal Room',
         imgUrl:'/icons/add-personal.svg',
         route:'/personal-room'
     }, 

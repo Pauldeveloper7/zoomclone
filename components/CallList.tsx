@@ -48,7 +48,7 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
 
       const recordings = callData
         .filter((call) => call.recordings.length > 0)
-        .flatMap((call) => call.recordings);
+        .flatMap((call) => call.recordings); // if we have an arrays convert them to single array 
 
       setRecordings(recordings);
     };
