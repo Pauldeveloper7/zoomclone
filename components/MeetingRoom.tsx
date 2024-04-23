@@ -28,7 +28,7 @@ const MeetingRoom = () => {
         return <SpeakerLayout participantsBarPosition="right"/>
     }
   }
-  const router = useRouter();
+  // const router = useRouter();
   return (
     <section className='relative h-screen w-full overflow-hidden pt-4  text-white'>
         <div  className='relative flex size-full items-center justify-center '>
