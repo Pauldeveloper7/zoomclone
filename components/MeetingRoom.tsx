@@ -1,12 +1,12 @@
 'use client'
 import { cn } from '@/lib/utils';
-import {DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuLabel,DropdownMenuSeparator,DropdownMenuTrigger,
+import {DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuSeparator,DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { CallControls, CallParticipantsList, CallingState, PaginatedGridLayout, SpeakerLayout, useCallStateHooks } from '@stream-io/video-react-sdk';
 import {useState} from 'react'
 import { LayoutList,  Users2Icon } from 'lucide-react';
 import EndCallButton from './EndCallButton'
-import { useRouter, useSearchParams } from 'next/navigation';
+import {useSearchParams } from 'next/navigation';
 import Loader from './Loader';
 type callLayoutType = 'grid' | 'speaker-left' | 'speaker-right'
 const MeetingRoom = () => {
@@ -40,7 +40,9 @@ const MeetingRoom = () => {
         </div>
         </div>
         <div className='fixed bottom-0 flex w-full items-center justify-center gap-5 flex-wrap'>
-                <CallControls onLeave={()=>router.push('/')} />
+                <CallControls 
+                // onLeave={()=>router.push('/')}
+                 />
 <DropdownMenu>
 <div className='flex items-center'>
   <DropdownMenuTrigger className=' cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]'>
