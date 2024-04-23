@@ -1,8 +1,7 @@
 "use client";
 
 import { useCall, useCallStateHooks } from "@stream-io/video-react-sdk";
-
-import { Button } from "./ui/button";
+import { Button } from './ui/button';
 import { useRouter } from "next/navigation";
 const EndCallButton = () => {
   const call = useCall();
@@ -29,11 +28,11 @@ const EndCallButton = () => {
     router.push("/");
   };
 
-  return (
-    <Button onClick={endCall} className="bg-red-500">
-      End call
-    </Button>
-  );
+    return (
+      <Button onClick={endCall} className="bg-red-500">
+        End call for everyone
+      </Button>
+    );
 };
 
 export default EndCallButton;

@@ -6,7 +6,7 @@ import { CallControls, CallParticipantsList, CallingState, PaginatedGridLayout, 
 import {useState} from 'react'
 import { LayoutList,  Users2Icon } from 'lucide-react';
 import EndCallButton from './EndCallButton'
-import {useSearchParams } from 'next/navigation';
+import {useSearchParams , useRouter } from 'next/navigation';
 import Loader from './Loader';
 type callLayoutType = 'grid' | 'speaker-left' | 'speaker-right'
 const MeetingRoom = () => {
@@ -28,7 +28,7 @@ const MeetingRoom = () => {
         return <SpeakerLayout participantsBarPosition="right"/>
     }
   }
-  // const router = useRouter();
+  const router = useRouter();
   return (
     <section className='relative h-screen w-full overflow-hidden pt-4  text-white'>
         <div  className='relative flex size-full items-center justify-center '>
@@ -41,7 +41,7 @@ const MeetingRoom = () => {
         </div>
         <div className='fixed bottom-0 flex w-full items-center justify-center gap-5 flex-wrap'>
                 <CallControls 
-                // onLeave={()=>router.push('/')}
+                onLeave={()=>router.push('/')}
                  />
 <DropdownMenu>
 <div className='flex items-center'>
