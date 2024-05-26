@@ -7,7 +7,7 @@ import {useState} from 'react'
 import { LayoutList,  Users2Icon } from 'lucide-react';
 import EndCallButton from './EndCallButton'
 import {useSearchParams} from 'next/navigation';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Loader from './Loader';
 type callLayoutType = 'grid' | 'speaker-left' | 'speaker-right'
 const MeetingRoom = () => {
