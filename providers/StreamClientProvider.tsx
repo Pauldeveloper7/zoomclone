@@ -31,6 +31,7 @@ import { ReactNode, useEffect, useState } from 'react';
   })
   SetVideoClient(client);
     },[user,isLoaded]);
+
     if(!videoClient) return <Loader/>
     return (
       <StreamVideo client={videoClient}>
