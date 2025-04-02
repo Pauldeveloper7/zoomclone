@@ -8,10 +8,10 @@ import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
 import '@stream-io/video-react-sdk/dist/css/styles.css';
 export const metadata: Metadata = {
-  title: "YOOM",
+  title: "FaceToFace",
   description: "Video calling App",
   icons: {
-    icon: "/icons/logo.svg",
+    icon: "/icons/facetoface.png",
   },
 };
 
@@ -23,15 +23,15 @@ export default function RootLayout({
        <ClerkProvider
        appearance={{
           layout:{
-            logoImageUrl:'/icons/yoom-logo.svg',
+            logoImageUrl:'/icons/FaceToFace-logo.svg',
             socialButtonsVariant:'iconButton',
           },
           variables:{
-            colorText:'#fff',
+            colorText:'#ffff',
             colorPrimary:'#0E78F9',
-            colorBackground:'#1c1f2e',
-            colorInputBackground:'#252a41',
-            colorInputText:'#fff'
+            colorBackground:'#0e1117',
+            colorInputBackground:'#343438',
+            colorInputText:'#ffff'
           }
        }}
        >

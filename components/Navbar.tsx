@@ -10,15 +10,15 @@ const Navbar = () => {
     '>
       <Link href={'/'} className='flex items-center gap-1'>
         <Image
-          src='/icons/logo.svg'
-          alt='Yoom logo'
+          src='/icons/facetoface.png'
+          alt='FaceToFace logo'
           width={32}
           height={32}
-          className='max-sm:size-10'
+          className='max-sm:size-10 rounded-full'
           />
           <p className='text-[26px] font-extrabold
           text-white max-sm:hidden
-          '>Yoom</p>
+          '>FaceToFace</p>
         </Link>
         <div className='flex-between gap-5'>
          {/* cleak for user management  */}

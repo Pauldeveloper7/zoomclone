@@ -29,7 +29,7 @@ const MobileNav = () => {
   <Link href={'/'} className='flex items-center gap-1'>
         <Image
           src='/icons/logo.svg'
-          alt='Yoom logo'
+          alt='FaceToFace logo'
           width={32}
           height={32}
           className='max-sm:size-10'
